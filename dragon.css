@@ -1,0 +1,30 @@
+body {
+    margin-top: 50px;
+    text-align: center;
+}
+
+#dragon {
+    margin: auto;
+    display: inline-block;
+}
+
+#hero {
+    margin: auto;
+    display: inline-block;
+}
+
+.btn {
+    width: 75px;
+    height: 30px;
+    border-radius: 0;
+    font-size: 20px;
+    background-color: #fff;
+}
+
+#gonnaFight div input {
+    margin-top: 15px;
+}
+
+.hidden {
+    display: none;
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Fight the Dragon</title>
+        <link rel="stylesheet" type="text/css" href="dragon.css">
+    </head>
+    <body>
+        <div id="game">
+            <!-- If user rolls higher than 6, the user wins. If you roll less than
+            6, the user loses and the hero img gets replaced with a burning
+            hero img. -->
+            <div id="dragon">
+                <img name="liveDragon" src="dragon.png">
+                <!-- <img name="deadDragon" src="dragon.png"> -->
+            </div>
+
+            <div id="hero">
+                <img name="liveHero" src="http://zeldawiki.org/images/thumb/c/c5/Link_2_(SCII).png/250px-Link_2_(SCII).png">
+                <!-- <img name="deadHero" src=""> -->
+            </div>
+
+            <div id="yesOrNo">
+                <h1>You've encountered a dragon!!</h1>
+                <h2>Do you fight?</h2>
+                <input type="button" class="btn" value="Yes" onclick="fight();">
+                <input type="button" class="btn" value="No" onclick="runAway();">
+            </div>
+
+            <div id="gonnaFight" class="hidden">
+                <h1>Okay, here we go. Roll the dice.</h1>
+                <h2>Roll lower than 9 and you burn.</h2>
+                <input type="button" class="btn" onclick="rollDice();" value="Roll">
+            </div>
+
+            <div id="roll" class="hidden">
+                <h1 id="rollMessage">Rolling</h1>
+                <img src="d1.gif" name="die1">
+                <img src="d1.gif" name="die2">
+                <h2 id="userRoll"></h2>
+            </div>
+
+        </div>
+
+        <script type="text/javascript">
+
+            function runAway() {
+                document.getElementById("yesOrNo").classList.add("hidden");
+            }
+
+            function fight() {
+                document.getElementById("yesOrNo").classList.add("hidden");
+                document.getElementById("gonnaFight").classList.remove("hidden");
+            }
+
+            function rollDice() {
+                document.getElementById("gonnaFight").classList.add("hidden");
+                document.getElementById("roll").classList.remove("hidden");
+
+                var randomDie1 = Math.ceil(Math.random() * 6);
+                var randomDie2 = Math.ceil(Math.random() * 6);
+
+                document.images.die1.src = "d" + randomDie1 + ".gif";
+                document.images.die2.src = "d" + randomDie2 + ".gif";
+
+                // async function rolling() {
+                //     for (var i = 0; i < 4; i++) {
+                //         await.sleep(1000);
+                //         document.getElementById("rollMessage").innerHTML += ".";
+                //     }
+                // }
+
+                document.getElementById("userRoll").innerHTML = "You rolled " + (randomDie1 + randomDie2);
+
+                if(randomDie1 + randomDie2 > 9) {
+                    document.images.dragon.src = "deadDragon.png";
+                } else {
+                    document.images.hero.src = "deadHero.png";
+                }
+            }
+
+        </script>
+    </body>
+</html>
